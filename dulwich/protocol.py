@@ -112,6 +112,8 @@ class Protocol(object):
             return read(size-4)
         except socket.error, e:
             raise GitProtocolError(e)
+        except ValueError, e:
+            raise GitProtocolError(e)
 
     def eof(self):
         """Test whether the protocol stream has reached EOF.
